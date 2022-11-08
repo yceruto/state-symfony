@@ -7,6 +7,7 @@
         "php": ">=8.1",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "money/money": "^2.0",
         "symfony/console": "6.1.*",
         "symfony/dotenv": "6.1.*",
         "symfony/flex": "^2",
@@ -15,6 +16,10 @@
         "symfony/yaml": "6.1.*"
     },
     "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "symfony/browser-kit": "6.1.*",
+        "symfony/css-selector": "6.1.*",
+        "symfony/phpunit-bridge": "^6.1"
     },
     "config": {
         "allow-plugins": {
