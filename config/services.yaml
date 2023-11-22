@@ -10,3 +10,25 @@ services:
 
     App\Booking\State\DraftState:
         public: true
+
+    # initial state
+    App\Shared\State\State $draftState: '@App\Booking\State\DraftState'
+
+    # Planned Open-Side
+    App\Shared\State\State $plannedOpenSideAcceptedState: '@App\Booking\State\PlannedOpenSide\PlannedOpenSideAcceptedState'
+    App\Shared\State\State $plannedOpenSideCancelledState: '@App\Booking\State\PlannedOpenSide\PlannedOpenSideCancelledState'
+    App\Shared\State\State $plannedOpenSideExecutingState: '@App\Booking\State\PlannedOpenSide\PlannedOpenSideExecutingState'
+    App\Shared\State\State $plannedOpenSideFinishedState: '@App\Booking\State\PlannedOpenSide\PlannedOpenSideFinishedState'
+    App\Shared\State\State $plannedOpenSidePendingState: '@App\Booking\State\PlannedOpenSide\PlannedOpenSidePendingState'
+    App\Shared\State\State $plannedOpenSideRefusedState: '@App\Booking\State\PlannedOpenSide\PlannedOpenSideRefusedState'
+    App\Shared\State\State $plannedOpenSideRejectedState: '@App\Booking\State\PlannedOpenSide\PlannedOpenSideRejectedState'
+    App\Shared\State\State $plannedOpenSideWaitingState: '@App\Booking\State\PlannedOpenSide\PlannedOpenSideWaitingState'
+
+    # Planned Blind-Side
+    App\Shared\State\State $plannedBlindSideWaitingState: '@App\Booking\State\PlannedBlindSide\PlannedBlindSideWaitingState'
+
+    # On-Demand Open-Side
+    App\Shared\State\State $onDemandOpenSideWaitingState: '@App\Booking\State\OnDemandOpenSide\OnDemandOpenSideWaitingState'
+
+    # On-Demand Blind-Side
+    App\Shared\State\State $onDemandBlindSideWaitingState: '@App\Booking\State\OnDemandBlindSide\OnDemandBlindSideWaitingState'

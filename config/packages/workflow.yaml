@@ -1,0 +1,58 @@
+framework:
+    workflows:
+        request:
+            type: state_machine
+            supports:
+                - App\Booking\Model\Request
+            marking_store:
+                service: App\Shared\Workflow\MarkingStore\ReflectionMarkingStore
+            initial_marking: DRAFT
+            places:
+                - DRAFT
+                - WAITING
+                - REJECTED
+                - COMPLETED
+            transitions:
+                request:
+                    from: DRAFT
+                    to: WAITING
+                complete:
+                    from: WAITING
+                    to: COMPLETED
+                reject:
+                    from: WAITING
+                    to: REJECTED
+
+        booking:
+            type: state_machine
+            supports:
+                - App\Booking\Model\Booking
+            marking_store:
+                service: App\Shared\Workflow\MarkingStore\ReflectionMarkingStore
+            initial_marking: PENDING
+            places:
+                - PENDING
+                - CANCELLED
+                - REFUSED
+                - ACCEPTED
+                - EXECUTING
+                - FINISHED
+            transitions:
+                cancel_pending:
+                    from: PENDING
+                    to: CANCELLED
+                refuse:
+                    from: PENDING
+                    to: REFUSED
+                accept:
+                    from: PENDING
+                    to: ACCEPTED
+                cancel_accepted:
+                    from: ACCEPTED
+                    to: CANCELLED
+                execute:
+                    from: ACCEPTED
+                    to: EXECUTING
+                finish:
+                    from: EXECUTING
+                    to: FINISHED

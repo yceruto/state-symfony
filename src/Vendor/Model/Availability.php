@@ -38,7 +38,7 @@ class Availability
 
     public function equals(DateTimeImmutable $date): bool
     {
-        return $this->date->format('Y-m-d') === $date->format('Y-m-d');
+        return $this->date->format('Y-m-d H:i') === $date->format('Y-m-d H:i');
     }
 
     public function enable(): void

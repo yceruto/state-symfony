@@ -39,31 +39,4 @@ class Request
     {
         return $this->status;
     }
-
-    public function wait(): void
-    {
-        if (!$this->status->isDraft()) {
-            throw new LogicException('Unexpected request status.');
-        }
-
-        $this->status = RequestStatus::WAITING;
-    }
-
-    public function reject(): void
-    {
-        if (!$this->status->isWaiting()) {
-            throw new LogicException('Unexpected request status.');
-        }
-
-        $this->status = RequestStatus::REJECTED;
-    }
-
-    public function complete(): void
-    {
-        if (!$this->status->isWaiting()) {
-            throw new LogicException('Unexpected request status.');
-        }
-
-        $this->status = RequestStatus::COMPLETE;
-    }
 }

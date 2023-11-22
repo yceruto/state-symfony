@@ -7,7 +7,6 @@ namespace App\Booking\Model;
 use App\Customer\Model\Client;
 use App\Vendor\Model\Doctor;
 use DateTimeImmutable;
-use LogicException;
 
 class Booking
 {
@@ -41,51 +40,6 @@ class Booking
     public function status(): BookingStatus
     {
         return $this->status;
-    }
-
-    public function cancel(): void
-    {
-        if (!$this->status->isPending() && !$this->status->isAccepted()) {
-            throw new LogicException('Unexpected booking status.');
-        }
-
-        $this->status = BookingStatus::CANCELLED;
-    }
-
-    public function refuse(): void
-    {
-        if ($this->status->isPending()) {
-            throw new LogicException('Unexpected booking status.');
-        }
-
-        $this->status = BookingStatus::REFUSED;
-    }
-
-    public function accept(): void
-    {
-        if (!$this->status->isPending()) {
-            throw new LogicException('Unexpected booking status.');
-        }
-
-        $this->status = BookingStatus::ACCEPTED;
-    }
-
-    public function execute(): void
-    {
-        if (!$this->status->isAccepted()) {
-            throw new LogicException('Unexpected booking status.');
-        }
-
-        $this->status = BookingStatus::EXECUTING;
-    }
-
-    public function finish(): void
-    {
-        if (!$this->status->isExecuting()) {
-            throw new LogicException('Unexpected booking status.');
-        }
-
-        $this->status = BookingStatus::FINISHED;
     }
 
     private function __construct(

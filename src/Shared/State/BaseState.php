@@ -8,7 +8,7 @@ use App\Booking\Model\Booking;
 use App\Booking\Model\Request;
 use RuntimeException;
 
-class BaseState implements State
+abstract class BaseState implements State
 {
     protected Context $context;
 

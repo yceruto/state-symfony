@@ -6,12 +6,12 @@ namespace App\Booking\Model;
 
 enum BookingStatus: string
 {
-    case PENDING = 'pending';
-    case CANCELLED = 'cancelled';
-    case REFUSED = 'refused';
-    case ACCEPTED = 'accepted';
-    case EXECUTING = 'executing';
-    case FINISHED = 'finished';
+    case PENDING = 'PENDING';
+    case CANCELLED = 'CANCELLED';
+    case REFUSED = 'REFUSED';
+    case ACCEPTED = 'ACCEPTED';
+    case EXECUTING = 'EXECUTING';
+    case FINISHED = 'FINISHED';
 
     public function isPending(): bool
     {

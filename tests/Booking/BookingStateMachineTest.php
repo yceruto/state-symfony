@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Tests\Booking;
 
-use App\Booking\Model\Booking;
 use App\Booking\Model\Request;
 use App\Booking\Service\BookingStateMachine;
 use App\Booking\State\DraftState;
@@ -44,7 +43,7 @@ class BookingStateMachineTest extends KernelTestCase
         self::assertTrue($request->status()->isWaiting());
 
         $booking = $stateMachine->process($request);
-        self::assertTrue($request->status()->isComplete());
+        self::assertTrue($request->status()->isCompleted());
         self::assertTrue($booking->status()->isPending());
         self::assertEquals($doctor, $booking->doctor());
         self::assertCount(1, $client->bookings());

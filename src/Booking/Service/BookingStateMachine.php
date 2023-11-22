@@ -30,7 +30,7 @@ class BookingStateMachine implements Context
         $this->state->request($request);
     }
 
-    public function process(Request $request): Booking
+    public function process(Request $request): ?Booking
     {
         return $this->state->process($request);
     }

@@ -6,10 +6,14 @@ namespace App\Booking\Model;
 
 enum RequestStatus: string
 {
-    case DRAFT = 'draft';
-    case WAITING = 'waiting';
-    case REJECTED = 'rejected';
-    case COMPLETE = 'complete';
+    public const REQUEST_TRANSITION = 'request';
+    public const REJECT_TRANSITION = 'reject';
+    public const COMPLETE_TRANSITION = 'complete';
+
+    case DRAFT = 'DRAFT';
+    case WAITING = 'WAITING';
+    case REJECTED = 'REJECTED';
+    case COMPLETED = 'COMPLETED';
 
     public function isDraft(): bool
     {
@@ -26,8 +30,8 @@ enum RequestStatus: string
         return $this === self::REJECTED;
     }
 
-    public function isComplete(): bool
+    public function isCompleted(): bool
     {
-        return $this === self::COMPLETE;
+        return $this === self::COMPLETED;
     }
 }
